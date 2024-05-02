@@ -47,9 +47,6 @@ import com.example.coroutine.ui.theme.CoroutineTheme
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.stateIn
-import com.example.coroutine.domain.onBoarding.GetIsFirstTimeInDataStoreUseCase
-import com.example.coroutine.prsentation.screens1.onBouding.Screens
-import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
@@ -64,14 +61,7 @@ class MainActivity : ComponentActivity() {
                 Surface() {
 
                     val navController = rememberNavController()
-                         val scrollState = rememberScrollState()
-                    val x  =  viewModelScope.launch {
-                        onBoardingCompleted.value = getIsFirstTimeInDataStoreUseCase().stateIn(viewModelScope).value
-                        startDestination = if (onBoardingCompleted.value) Screens.PopularMovie.route else Screens.onBoarding.route
-                    }
-                    if (){
 
-                    }
                     NavHost(navController = navController, startDestination = "UI1") {
                         composable("UI1") { UI1(navController) }
                         composable("UI2") { UI2(navController) }
