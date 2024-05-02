@@ -42,7 +42,6 @@ import com.example.coroutine.data.di.Constant.MOVIE_IMAGE_BASE_URL
 import com.example.coroutine.data.imageSize
 import com.example.coroutine.model.PopularMovies
 import com.example.coroutine.prsentation.screens1.onBouding.onBoardingViewModel
-import com.example.coroutine.prsentation.screens1.onBouding.startPage
 import com.example.coroutine.ui.theme.CoroutineTheme
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.MutableStateFlow
