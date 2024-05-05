@@ -107,4 +107,6 @@ dependencies {
     implementation(libs.androidx.paging.compose)
     implementation("androidx.datastore:datastore-preferences:1.0.0")
     implementation("androidx.hilt:hilt-navigation-compose:1.2.0")
+    debugImplementation("com.github.chuckerteam.chucker:library:4.0.0")
+    releaseImplementation("com.github.chuckerteam.chucker:library-no-op:4.0.0")
 }

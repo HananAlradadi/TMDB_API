@@ -26,7 +26,7 @@ class onBoardingViewModel @Inject constructor(
     private fun getonBoardingState(){
      viewModelScope.launch {
          onBoardingCompleted.value = getIsFirstTimeInDataStoreUseCase().stateIn(viewModelScope).value
-         startDestination = if (onBoardingCompleted.value) Screens.PopularMovie.route else Screens.onBoarding.route
+         startDestination = if (onBoardingCompleted.value) Screens.Home.route else Screens.onBoarding.route
      }
     }
     private fun saveonBoardingState(onBoardingPage : Boolean){

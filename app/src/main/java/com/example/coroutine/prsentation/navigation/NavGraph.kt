@@ -1,6 +1,8 @@
 package com.example.coroutine.prsentation.navigation
 
+import androidx.compose.foundation.layout.Column
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.graphics.Color
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import androidx.navigation.NavHostController
@@ -8,40 +10,57 @@ import androidx.navigation.NavOptionsBuilder
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import com.example.coroutine.UI1
-import com.example.coroutine.UI2
-import com.example.coroutine.UI3
-import com.example.coroutine.UI4
+
 import com.example.coroutine.model.PopularMovies
+import com.example.coroutine.prsentation.screens.PopularMoviesScreen
 import com.example.coroutine.prsentation.screens1.onBouding.Screens
 import com.example.coroutine.prsentation.screens1.onBouding.onBoardingViewModel
 import dagger.Component
 import dagger.hilt.android.lifecycle.HiltViewModel
+import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.ui.Modifier
 
 @Composable
 fun NavGraph(
     navController: NavHostController = rememberNavController()
-){
-    val OnBoardingViewModel : onBoardingViewModel = hiltViewModel()
+) {
+   // val onBoardingViewModel: OnBoardingViewModel = hiltViewModel()
     NavHost(
-        navController = navController ,
-        startDestination = OnBoardingViewModel.startDestination
+        navController = navController,
+        startDestination = Screens.Home.route
     )
     {
-
-        composable( Screens.onBoarding.route) { UI1(navController) }
-        composable(Screens.PopularMovie.route) {
+        /*
+        composable(Screens.onBoarding.route) {
+            //OnBoardingScreen(onBoardingViewModel, navController)
+        }
+       */
+        composable(Screens.Home.route) {
             val viewModel = hiltViewModel<PopularMovies>()
-            UI4(viewModel)
+            PopularMoviesScreen(navController, viewModel.popularMoviesState)
+        }
+        composable(Screens.Search.route) {
+            Column(modifier = Modifier
+                .fillMaxSize()
+                .background(Color.Gray)) {
+
+            }
+        }
+        composable(Screens.profile.route) {
+            Column(modifier = Modifier
+                .fillMaxSize()
+                .background(Color.Gray)) {
+
+            }
         }
 
     }
+}
 
-    fun NavOptionsBuilder.popUpToTop(navController: NavController){
-        popUpTo(navController.currentBackStackEntry?.destination?.route?: return){
-            inclusive = true
-        }
+fun NavOptionsBuilder.popUpToTop(navController: NavController) {
+    popUpTo(navController.currentBackStackEntry?.destination?.route ?: return) {
+        inclusive =  true
     }
-
-
 }

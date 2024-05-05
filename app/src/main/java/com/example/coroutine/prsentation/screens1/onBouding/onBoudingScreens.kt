@@ -15,7 +15,7 @@ import com.example.coroutine.data.UIState
 import com.example.coroutine.data.di.Constant
 import com.example.coroutine.data.imageSize
 import com.example.coroutine.model.PopularMovies
-
+/*
 @OptIn(ExperimentalStdlibApi ::class)
 @Composable
 fun UI4(viewModel: PopularMovies) {
@@ -68,4 +68,4 @@ fun UI4(viewModel: PopularMovies) {
 
 
 
-}
+}*/

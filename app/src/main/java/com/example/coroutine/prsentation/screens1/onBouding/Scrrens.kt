@@ -1,15 +1,42 @@
 package com.example.coroutine.prsentation.screens1.onBouding
 
-sealed class Screens : Destination {
-    object onBoarding : Screens() {
-        override val route: String = "OnBoarding"
-    }
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.AccountCircle
+import androidx.compose.material.icons.filled.Home
+import androidx.compose.material.icons.filled.Search
+import androidx.compose.ui.graphics.vector.ImageVector
 
-    object PopularMovie : Screens() {
-        override val route: String = "PopularMovie"
-    }
+sealed class Screens (val route : String) {
+    object onBoarding : Screens("on_boarding")
+    object Home : Screens("popular_movie_screen")
+    object Search : Screens("search_route")
+    object profile : Screens("profile_route")
+
+
 }
 
-interface Destination {
-    val route: String
+data class BottomNavigationItem(
+    val label : String = "" ,
+    val icon : ImageVector = Icons.Filled.Home ,
+    val route : String = ""
+) {
+   fun BottomNavigationItems (): List<BottomNavigationItem>{
+       return listOf(
+           BottomNavigationItem(
+               label = "Home" ,
+               icon = Icons.Filled.Home ,
+               route = Screens.Home.route
+           ),
+           BottomNavigationItem(
+               label = "Search" ,
+               icon = Icons.Filled.Search ,
+               route = Screens.Search.route
+           ),
+           BottomNavigationItem(
+               label = "Profile" ,
+               icon = Icons.Filled.AccountCircle ,
+               route = Screens.profile.route
+           )
+       )
+   }
 }
