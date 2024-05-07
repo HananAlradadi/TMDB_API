@@ -11,20 +11,23 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 
-import com.example.coroutine.model.PopularMovies
+import com.example.coroutine.prsentation.screens.PopularMovies
 import com.example.coroutine.prsentation.screens.PopularMoviesScreen
 import com.example.coroutine.prsentation.screens1.onBouding.Screens
-import com.example.coroutine.prsentation.screens1.onBouding.onBoardingViewModel
-import dagger.Component
-import dagger.hilt.android.lifecycle.HiltViewModel
 import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.ui.Modifier
+import androidx.navigation.NavType
+import androidx.navigation.navArgument
+import com.example.coroutine.prsentation.screens.DetailsViewMode
+import com.example.coroutine.prsentation.screens.SearchMovieViewModel
+import com.example.coroutine.prsentation.screens.DetailsScreen
+import com.example.coroutine.prsentation.screens.SearchMoviesScreen
 
 @Composable
 fun NavGraph(
-    navController: NavHostController = rememberNavController()
+    navController: NavHostController = rememberNavController(),
+    viewModel1 : DetailsViewMode
 ) {
    // val onBoardingViewModel: OnBoardingViewModel = hiltViewModel()
     NavHost(
@@ -32,6 +35,7 @@ fun NavGraph(
         startDestination = Screens.Home.route
     )
     {
+
         /*
         composable(Screens.onBoarding.route) {
             //OnBoardingScreen(onBoardingViewModel, navController)
@@ -43,16 +47,28 @@ fun NavGraph(
         }
         composable(Screens.Search.route) {
             Column(modifier = Modifier
-                .fillMaxSize()
-                .background(Color.Gray)) {
+                .fillMaxSize()) {
 
             }
+            val viewModel= hiltViewModel<SearchMovieViewModel>()
+            SearchMoviesScreen(navController , viewModel.searchMovieState){
+                viewModel.getArtWorks(it)
+            }
+
         }
         composable(Screens.profile.route) {
             Column(modifier = Modifier
                 .fillMaxSize()
                 .background(Color.Gray)) {
 
+            }
+        }
+        composable("${Screens.MovieDetail.route}/{id}",
+            arguments = listOf(navArgument("id") { type = NavType.IntType })) {
+            val idMovie = it.arguments?.getInt("id")
+            if (idMovie != null) {
+                val viewModel = hiltViewModel<DetailsViewMode>()
+                DetailsScreen(idMovie, viewModel)
             }
         }
 
@@ -62,5 +78,6 @@ fun NavGraph(
 fun NavOptionsBuilder.popUpToTop(navController: NavController) {
     popUpTo(navController.currentBackStackEntry?.destination?.route ?: return) {
         inclusive =  true
+        saveState = true
     }
 }

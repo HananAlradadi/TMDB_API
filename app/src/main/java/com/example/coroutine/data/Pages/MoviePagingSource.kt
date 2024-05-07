@@ -7,7 +7,7 @@ import com.example.coroutine.data.remore.movieAPI
 import com.example.coroutine.model.Results
 import okio.IOException
 
-class MoviePagingSource( private val  movieapi : movieAPI ,)
+class MoviePagingSource(private val movieapi: movieAPI,)
     : PagingSource<Int , Results>() {
     override fun getRefreshKey(state: PagingState<Int, Results>): Int? {
 return state.anchorPosition   }

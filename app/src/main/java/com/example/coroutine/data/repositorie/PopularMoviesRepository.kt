@@ -1,11 +1,11 @@
-package com.example.coroutine.model
+package com.example.coroutine.data.repositorie
 
 import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.paging.PagingData
 import com.example.coroutine.data.Pages.MoviePagingSource
-import com.example.coroutine.data.UIState
 import com.example.coroutine.data.remore.movieAPI
+import com.example.coroutine.model.Results
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 import javax.inject.Singleton

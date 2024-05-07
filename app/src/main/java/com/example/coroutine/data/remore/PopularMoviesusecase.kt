@@ -1,7 +1,7 @@
 package com.example.coroutine.data.remore
 
 import androidx.paging.PagingData
-import com.example.coroutine.model.PopularMoviesRepository
+import com.example.coroutine.data.repositorie.PopularMoviesRepository
 import com.example.coroutine.model.Results
 import dagger.Reusable
 import kotlinx.coroutines.flow.Flow

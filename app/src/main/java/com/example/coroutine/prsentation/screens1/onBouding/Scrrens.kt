@@ -11,6 +11,8 @@ sealed class Screens (val route : String) {
     object Home : Screens("popular_movie_screen")
     object Search : Screens("search_route")
     object profile : Screens("profile_route")
+// "movieDetailScreen/${moviePagingItems[index]?.id}"
+object MovieDetail : Screens("movieDetailScreen")
 
 
 }

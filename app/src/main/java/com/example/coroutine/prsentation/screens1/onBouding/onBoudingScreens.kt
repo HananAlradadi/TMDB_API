@@ -1,20 +1,5 @@
 package com.example.coroutine.prsentation.screens1.onBouding
 
-import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.items
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.unit.dp
-import coil.compose.AsyncImage
-import com.example.coroutine.data.UIState
-import com.example.coroutine.data.di.Constant
-import com.example.coroutine.data.imageSize
-import com.example.coroutine.model.PopularMovies
 /*
 @OptIn(ExperimentalStdlibApi ::class)
 @Composable

@@ -3,7 +3,9 @@ package com.example.coroutine.data.di
 import android.content.Context
 import com.chuckerteam.chucker.api.ChuckerInterceptor
 import com.example.coroutine.data.di.Constant.MOVIE_BASE_URL
+import com.example.coroutine.data.remore.detailsAPI
 import com.example.coroutine.data.remore.movieAPI
+import com.example.coroutine.data.remore.searchMovieApi
 import com.google.gson.Gson
 import dagger.Module
 import dagger.Provides
@@ -61,6 +63,21 @@ object networkmodel {
             retrofit: Retrofit
         ): movieAPI = retrofit.create(
             movieAPI::class.java
+        )
+
+        @Singleton
+        @Provides
+        fun providedetailsAPIService(
+            retrofit: Retrofit
+        ): detailsAPI = retrofit.create(
+            detailsAPI::class.java
+        )
+        @Singleton
+        @Provides
+        fun providesearchMovieApiService(
+            retrofit: Retrofit
+        ): searchMovieApi = retrofit.create(
+            searchMovieApi::class.java
         )
     }
 }
