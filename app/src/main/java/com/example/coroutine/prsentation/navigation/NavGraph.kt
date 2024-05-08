@@ -22,7 +22,9 @@ import androidx.navigation.navArgument
 import com.example.coroutine.prsentation.screens.DetailsViewMode
 import com.example.coroutine.prsentation.screens.SearchMovieViewModel
 import com.example.coroutine.prsentation.screens.DetailsScreen
+import com.example.coroutine.prsentation.screens.ProfileScreen
 import com.example.coroutine.prsentation.screens.SearchMoviesScreen
+import com.example.coroutine.prsentation.screens.UserViewModel
 
 @Composable
 fun NavGraph(
@@ -59,9 +61,11 @@ fun NavGraph(
         composable(Screens.profile.route) {
             Column(modifier = Modifier
                 .fillMaxSize()
-                .background(Color.Gray)) {
+                ) {
 
             }
+            val viewModel = hiltViewModel<UserViewModel>()
+            ProfileScreen(viewModel,navController)
         }
         composable("${Screens.MovieDetail.route}/{id}",
             arguments = listOf(navArgument("id") { type = NavType.IntType })) {
